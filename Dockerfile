@@ -1,5 +1,5 @@
 FROM python:alpine
-LABEL maintainer="kjake"
+LABEL maintainer="redispade"
 
 ADD dehydrated /etc/periodic/daily/dehydrated
 RUN apk add --update --no-cache && \
@@ -8,7 +8,7 @@ RUN apk add --update --no-cache && \
     git clone https://github.com/dehydrated-io/dehydrated && \
     cd dehydrated && \
     mkdir hooks && \
-    git clone https://github.com/SeattleDevs/letsencrypt-cloudflare-hook hooks/cloudflare && \
+    git clone https://github.com/redispade/letsencrypt-cloudflare-hook hooks/cloudflare && \
     pip3 install -r hooks/cloudflare/requirements.txt && \
     apk del git && \
     rm -rf /var/cache/apk/* /tmp/* /var/tmp/ ~/.cache/pip && \
